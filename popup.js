@@ -3,9 +3,9 @@
 // ! AUCUNE IA N'A ÉTÉ UTILISÉ ICI.
 
 const couleursDeBase = {
-    links: '#0000ff',
-    text: '#000000',
-    background: '#ffffff'
+    links : document.querySelectorAll('a'),
+    text: document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, label, span, a, li, input, textarea, button'),
+    background: document.body.style.backgroundColor
 };
 
 
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
     // J'attends que le color pickers change de couleur
     linkColorPicker.addEventListener('change', function (){
+        // le callback récupère la couleur
         // le callback récupère la couleur
         const nouvelleCouleur = linkColorPicker.value;
 
@@ -41,13 +42,11 @@ document.addEventListener('DOMContentLoaded', function (){
     // Quand on clique sur le bouton de reset
     resetButton.addEventListener('click', function(){
 
-        linkColorPicker.value = couleursDeBase.links;
-        textColorPicker.value = couleursDeBase.text;
-        bgColorPicker.value = couleursDeBase.background;
+        chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+            chrome.tabs.reload(tabs[0].id);
+        });
 
-        envoyerMessage('links', couleursDeBase.links);
-        envoyerMessage('text', couleursDeBase.text);
-        envoyerMessage('background', couleursDeBase.background);
+        location.reload();
     })
 
 })
