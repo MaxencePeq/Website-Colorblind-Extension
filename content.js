@@ -13,12 +13,19 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
         })
     }
 
-    if(message.type === 'text'){
-        const element = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, label, span, a, li, input, textarea, button');
-        element.forEach(elementTexte => {
-            element.style.color = message.color;
-        })
+    if (message.type === 'text'){
+        // je cible tous les éléments de la page
+        const elements = document.querySelectorAll('*');
+
+        elements.forEach(element => {
+            // et j'exclus les liens pour ne pas écraser leur couleur
+            if (element.tagName !== 'A') {
+                element.style.color = message.color;
+            }
+        });
     }
+
+
     if(message.type === 'background'){
         // J'applique sur body
         document.body.style.backgroundColor = message.color;

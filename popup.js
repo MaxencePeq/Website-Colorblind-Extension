@@ -2,13 +2,6 @@
 // !!! TOUS LES COMMENTAIRES SONT ÉCRIS A LA MAIN, POUR M'AIDER A LA COMPRÉHENSION !!!
 // ! AUCUNE IA N'A ÉTÉ UTILISÉ ICI.
 
-const couleursDeBase = {
-    links : document.querySelectorAll('a'),
-    text: document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, label, span, a, li, input, textarea, button'),
-    background: document.body.style.backgroundColor
-};
-
-
 document.addEventListener('DOMContentLoaded', function (){
 
 
