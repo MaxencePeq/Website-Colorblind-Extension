@@ -5,7 +5,17 @@
         body {
             width: 300px;
             padding: 20px;
-            font-family: Arial, sans-serif;
+            font-family: "Gill Sans", sans-serif;
+        }
+
+        .btn {
+            padding: 6px 15px;
+            font-size: 9px;
+            font-weight: 600;
+            color: cornflowerblue;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
         }
 
         .color-option {
@@ -30,7 +40,8 @@
     <title>Website for colorblind</title>
 </head>
 <body>
-<h2>Personnaliser la page</h2>
+<h1>Personnaliser la page</h1>
+    <h4> Choisissez votre couleur, puis cliquez hors de la boite de choix</h4>
 
 <div class="color-option">
     <label>Couleur des liens :</label>
@@ -45,6 +56,11 @@
 <div class="color-option">
     <label>Couleur du fond :</label>
     <input type="color" id="bgColor" value="#ffffff">
+</div>
+
+<div>
+    <label>Revenir aux couleurs de base  </label>
+    <input class="btn" type="button" id="backToBaseColor" value="Cliquez ici">
 </div>
 
 <script src="popup.js"></script>
