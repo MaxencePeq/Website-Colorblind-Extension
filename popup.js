@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function (){
 
 
     // La je récupère avec les IDs les color pickers
-    const linkColorPicker = document.querySelector('.linkColor');
-    const textColorPicker = document.getElementById('textColor');
-    const bgColorPicker = document.getElementById('bgColor');
+    const linkColorPicker = document.querySelector('#linkColor');
+    const textColorPicker = document.querySelector('#textColor');
+    const bgColorPicker = document.querySelector('#bgColor');
 
     // J'attends que le color pickers change de couleur
     linkColorPicker.addEventListener('change', function (){
