@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .color-option {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            width: 120px;
+            font-weight: bold;
+        }
+
+        input[type="color"] {
+            width: 60px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <title>Website for colorblind</title>
+</head>
+<body>
+<h2>Personnaliser la page</h2>
+
+<div class="color-option">
+    <label>Couleur des liens :</label>
+    <input type="color" id="linkColor" value="#0000ff">
+</div>
+
+<div class="color-option">
+    <label>Couleur du texte :</label>
+    <input type="color" id="textColor" value="#000000">
+</div>
+
+<div class="color-option">
+    <label>Couleur du fond :</label>
+    <input type="color" id="bgColor" value="#ffffff">
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
