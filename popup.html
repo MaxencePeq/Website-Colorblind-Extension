@@ -1,66 +1,139 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <style>
         body {
-            width: 300px;
+            width: 320px;
             padding: 20px;
-            font-family: "Gill Sans", sans-serif;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
         }
 
-        .btn {
-            padding: 6px 15px;
-            font-size: 9px;
-            font-weight: 600;
-            color: cornflowerblue;
-            border: none;
-            border-radius: 8px;
+        h1 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        h4 {
+            font-size: 0.9rem;
+            font-weight: normal;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+
+        .options-container {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
             cursor: pointer;
         }
 
-        .color-option {
-            margin: 15px 0;
+        .radio-option:last-child {
+            border-bottom: none;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 15px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .label-title {
+            display: block;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .label-desc {
+            display: block;
+            font-size: 0.75rem;
+            color: #95a5a6;
+        }
+
+        .actions {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 10px;
         }
 
-        label {
-            width: 120px;
-            font-weight: bold;
+        .btn {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: opacity 0.2s;
         }
 
-        input[type="color"] {
-            width: 60px;
-            height: 40px;
-            border: none;
-            cursor: pointer;
+        #btnValider {
+            background-color: #3498db;
+            color: white;
+        }
+
+        #backToBaseColor {
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
         }
     </style>
     <title>Website for colorblind</title>
 </head>
 <body>
-<h1>Personnaliser la page</h1>
-    <h4> Choisissez votre couleur, puis cliquez hors de la boite de choix</h4>
+<h1>Accessibilité</h1>
+<h4>Sélectionnez le profil adapté à votre vision :</h4>
 
-<div class="color-option">
-    <label>Couleur des liens :</label>
-    <input type="color" id="linkColor" value="#0000ff">
+<div class="options-container">
+    <div class="radio-option">
+        <input type="radio" id="protanopie" name="daltonisme" value="protanopie">
+        <label for="protanopie">
+            <span class="label-title">Protanopie</span>
+            <span class="label-desc">Difficulté avec le Rouge</span>
+        </label>
+    </div>
+
+    <div class="radio-option">
+        <input type="radio" id="deuteranopie" name="daltonisme" value="deuteranopie">
+        <label for="deuteranopie">
+            <span class="label-title">Deutéranopie</span>
+            <span class="label-desc">Difficulté avec le Vert</span>
+        </label>
+    </div>
+
+    <div class="radio-option">
+        <input type="radio" id="tritanopie" name="daltonisme" value="tritanopie">
+        <label for="tritanopie">
+            <span class="label-title">Tritanopie</span>
+            <span class="label-desc">Difficulté avec le Bleu</span>
+        </label>
+    </div>
 </div>
 
-<div class="color-option">
-    <label>Couleur du texte :</label>
-    <input type="color" id="textColor" value="#000000">
-</div>
-
-<div class="color-option">
-    <label>Couleur du fond :</label>
-    <input type="color" id="bgColor" value="#ffffff">
-</div>
-
-<div>
-    <label>Revenir aux couleurs de base  </label>
-    <input class="btn" type="button" id="backToBaseColor" value="Cliquez ici">
+<div class="actions">
+    <button id="btnValider" class="btn">Appliquer le profil</button>
+    <button id="backToBaseColor" class="btn">Réinitialiser les couleurs</button>
 </div>
 
 <script src="popup.js"></script>
