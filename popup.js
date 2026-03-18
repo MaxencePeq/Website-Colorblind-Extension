@@ -5,36 +5,45 @@
 document.addEventListener('DOMContentLoaded', function (){
 
     // Initialisation du thème
-    const textColor = "";
-    const linkColor = "";
-    const backgroundColor = "";
+    let textColor = "";
+    let linkColor = "";
+    let backgroundColor = "";
 
     // J'attends l'appuis du bouton valider
     const validation = document.querySelector('#btnValider');
     validation.addEventListener('click', function(){
         // Je cherche l'input qui a le nom "typeDaltonisme" ET qui est coché (:checked)
-        const radioCoche = document.querySelector('input[name="typeDaltonisme"]:checked');
-        switch (radioCoche){
+
+        const radioCoche = document.querySelector('input[name="daltonisme"]:checked');
+
+        switch (radioCoche.value){
             case "protanopie" :
+                textColor = "#000080";
+                linkColor = "#ff7f00";
+                backgroundColor = "#f5f5f5";
+                break;
             case "deuteranopie" :
+                backgroundColor = "#ffffff";
+                linkColor = "#ff0000";
+                textColor = "#000000"
+                break;
             case "tritanopie" :
+                backgroundColor = "#ffffff";
+                textColor = "#000000"
+                linkColor = "#ff0000"
+                break;
         }
+
+        envoyerMessage('links', linkColor);
+        envoyerMessage('background', backgroundColor);
+        envoyerMessage('text', textColor);
+
     });
 
 
     // envoyerMessage('links', nouvelleCouleur);
 
-    textColorPicker.addEventListener('change', function(){
-
-        const nouvelleCouleur = textColorPicker.value;
-        envoyerMessage('text', nouvelleCouleur)
-    })
-
-    bgColorPicker.addEventListener('change', function (){
-        const nouvelleCouleur = bgColorPicker.value;
-        envoyerMessage('background', nouvelleCouleur)
-    })
-
+    const resetButton = document.querySelector('#backToBaseColor')
     // Quand on clique sur le bouton de reset
     resetButton.addEventListener('click', function(){
 
