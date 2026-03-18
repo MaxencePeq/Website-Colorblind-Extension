@@ -18,23 +18,35 @@ document.addEventListener('DOMContentLoaded', function (){
         const radioCoche = document.querySelector('input[name="daltonisme"]:checked');
 
         // le switch évite les if, elseif, else...
-        switch (radioCoche.value){
-            case "protanopie" :
-                textColor = "#000080";
-                linkColor = "#ff7f00";
-                backgroundColor = "#f5f5f5";
+        switch (radioCoche.value) {
+            case "protanopie":
+                // Difficulté avec le rouge.
+                // Solution : Le fond gris clair et texte bleu marine donnent un contraste pur.
+                // Le lien orange vif (#ff7f00) contient beaucoup de jaune, qu'ils voient très bien.
+                backgroundColor = "#f5f5f5"; // Gris très clair
+                textColor = "#000080";       // Bleu marine
+                linkColor = "#ff7f00";       // Orange vif
                 break;
-            case "deuteranopie" :
-                backgroundColor = "#ffffff";
-                linkColor = "#ff0000";
-                textColor = "#000000"
+
+            case "deuteranopie":
+                // Difficulté avec le vert. Les rouges paraissent marron/ternes.
+                // Solution : Le Bleu est la couleur "refuge" absolue pour eux.
+                // On utilise le "Bleu Okabe-Ito" (#0072B2) pour les liens, qui est extrêmement visible et percutant pour eux.
+                backgroundColor = "#fafafa"; // Blanc cassé
+                textColor = "#1a1a1a";       // Noir / Gris très sombre
+                linkColor = "#0072b2";       // Bleu fort et accessible
                 break;
-            case "tritanopie" :
-                backgroundColor = "#ffffff";
-                textColor = "#000000"
-                linkColor = "#ff0000"
+
+            case "tritanopie":
+                // Difficulté avec le bleu (confondu avec le vert) et le jaune (confondu avec le rose).
+                // Solution : On supprime le bleu des liens ! On utilise un Rouge très fort ou un Rouge-Bordeaux.
+                // Comme leur vision du rouge/vert est intacte, un lien rouge vif est parfait pour eux.
+                backgroundColor = "#ffffff"; // Blanc pur
+                textColor = "#333333";       // Gris sombre
+                linkColor = "#b30000";       //  Rouge plus sombre
                 break;
         }
+
 
         envoyerMessage('links', linkColor);
         envoyerMessage('background', backgroundColor);
@@ -51,41 +63,30 @@ document.addEventListener('DOMContentLoaded', function (){
 
     /** --- Modification manuelle **/
 
-    // La je récupère avec les IDs les color pickers
-    const linkColorPicker = document.querySelector('#linkColor');
-    const textColorPicker = document.querySelector('#textColor');
-    const bgColorPicker = document.querySelector('#bgColor');
+    // Je récupère avec les BONS IDs de mon HTML
+    const linkColorPicker = document.querySelector('#specialLinkColor');
+    const textColorPicker = document.querySelector('#specialTextColor');
+    const bgColorPicker = document.querySelector('#specialBgColor');
 
-    // J'attends que le color pickers change de couleur
-    linkColorPicker.addEventListener('change', function (){
-        // le callback récupère la couleur
-        const nouvelleCouleur = linkColorPicker.value;
+    const BoutonLink = document.querySelector('#linkValider');
+    const boutonText = document.querySelector('#textValider');
+    const BoutonBg = document.querySelector('#bgValider');
 
-        // Et içi j'utilise la fonction pour envoyer les infos au navigateur.
-        envoyerMessage('links', nouvelleCouleur);
-    })
+    BoutonLink.addEventListener('click', function(){
+        envoyerMessage('links', linkColorPicker.value);
+    });
 
-    textColorPicker.addEventListener('change', function(){
+    boutonText.addEventListener('click', function(){
+        envoyerMessage('text', textColorPicker.value);
+    });
 
-        const nouvelleCouleur = textColorPicker.value;
-        envoyerMessage('text', nouvelleCouleur)
-    })
-
-    bgColorPicker.addEventListener('change', function (){
-        const nouvelleCouleur = bgColorPicker.value;
-        envoyerMessage('background', nouvelleCouleur)
-    })
+    BoutonBg.addEventListener('click', function(){
+        envoyerMessage('background', bgColorPicker.value);
+    });
 
 
 
-
-
-
-
-
-
-
-
+    /** --- Fonction et bouton de fin de page --- **/
 
     const resetButton = document.querySelector('#backToBaseColor')
     // Quand on clique sur le bouton de reset
@@ -94,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function (){
         chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
             chrome.tabs.reload(tabs[0].id);
         });
-
         location.reload();
     })
 
