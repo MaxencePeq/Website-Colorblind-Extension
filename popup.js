@@ -4,22 +4,25 @@
 
 document.addEventListener('DOMContentLoaded', function (){
 
+    // Initialisation du thème
+    const textColor = "";
+    const linkColor = "";
+    const backgroundColor = "";
 
-    // La je récupère avec les IDs les color pickers
-    const linkColorPicker = document.querySelector('#linkColor');
-    const textColorPicker = document.querySelector('#textColor');
-    const bgColorPicker = document.querySelector('#bgColor');
-    const resetButton = document.querySelector('#backToBaseColor');
+    // J'attends l'appuis du bouton valider
+    const validation = document.querySelector('#btnValider');
+    validation.addEventListener('click', function(){
+        // Je cherche l'input qui a le nom "typeDaltonisme" ET qui est coché (:checked)
+        const radioCoche = document.querySelector('input[name="typeDaltonisme"]:checked');
+        switch (radioCoche){
+            case "protanopie" :
+            case "deuteranopie" :
+            case "tritanopie" :
+        }
+    });
 
-    // J'attends que le color pickers change de couleur
-    linkColorPicker.addEventListener('change', function (){
-        // le callback récupère la couleur
-        // le callback récupère la couleur
-        const nouvelleCouleur = linkColorPicker.value;
 
-        // Et içi j'utilise la fonction pour envoyer les infos au navigateur.
-        envoyerMessage('links', nouvelleCouleur);
-    })
+    // envoyerMessage('links', nouvelleCouleur);
 
     textColorPicker.addEventListener('change', function(){
 
