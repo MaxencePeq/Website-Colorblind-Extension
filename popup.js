@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function (){
     let linkColor = "";
     let backgroundColor = "";
 
+    /** --- Modification du thème **/
     // J'attends l'appuis du bouton valider
     const validation = document.querySelector('#btnValider');
     validation.addEventListener('click', function(){
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
         const radioCoche = document.querySelector('input[name="daltonisme"]:checked');
 
+        // le switch évite les if, elseif, else...
         switch (radioCoche.value){
             case "protanopie" :
                 textColor = "#000080";
@@ -40,8 +42,50 @@ document.addEventListener('DOMContentLoaded', function (){
 
     });
 
+    /** --- Fin de la modification du thème **/
 
-    // envoyerMessage('links', nouvelleCouleur);
+
+
+
+
+
+    /** --- Modification manuelle **/
+
+    // La je récupère avec les IDs les color pickers
+    const linkColorPicker = document.querySelector('#linkColor');
+    const textColorPicker = document.querySelector('#textColor');
+    const bgColorPicker = document.querySelector('#bgColor');
+
+    // J'attends que le color pickers change de couleur
+    linkColorPicker.addEventListener('change', function (){
+        // le callback récupère la couleur
+        const nouvelleCouleur = linkColorPicker.value;
+
+        // Et içi j'utilise la fonction pour envoyer les infos au navigateur.
+        envoyerMessage('links', nouvelleCouleur);
+    })
+
+    textColorPicker.addEventListener('change', function(){
+
+        const nouvelleCouleur = textColorPicker.value;
+        envoyerMessage('text', nouvelleCouleur)
+    })
+
+    bgColorPicker.addEventListener('change', function (){
+        const nouvelleCouleur = bgColorPicker.value;
+        envoyerMessage('background', nouvelleCouleur)
+    })
+
+
+
+
+
+
+
+
+
+
+
 
     const resetButton = document.querySelector('#backToBaseColor')
     // Quand on clique sur le bouton de reset
