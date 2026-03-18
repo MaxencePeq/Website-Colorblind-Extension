@@ -24,7 +24,7 @@
             color: #7f8c8d;
         }
 
-        .options-container {
+        .options-container, .choice-container {
             background: white;
             border-radius: 12px;
             padding: 15px;
@@ -89,15 +89,56 @@
             color: white;
         }
 
-        #backToBaseColor {
-            background-color: #ecf0f1;
-            color: #7f8c8d;
-            font-size: 12px;
-        }
-
         .btn:hover {
             opacity: 0.9;
         }
+
+        .color-choice {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+
+        .color-choice:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .color-choice label {
+            font-size: 0.85rem;
+            flex-grow: 1;
+        }
+
+        input[type="color"] {
+            border: none;
+            width: 26px;
+            height: 26px;
+            padding: 0;
+            cursor: pointer;
+            background: none;
+            margin-right: 8px;
+        }
+
+        .btn-choice {
+            background-color: #ecf0f1;
+            color: #333;
+            padding: 6px 10px;
+            font-size: 0.7rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-choice:hover {
+            background-color: #bdc3c7;
+        }
+
     </style>
     <title>Website for colorblind</title>
 </head>
@@ -130,6 +171,27 @@
         </label>
     </div>
 </div>
+
+<div class="choice-container">
+    <div class="color-choice">
+        <label>Couleur des liens :</label>
+        <input type="color" id="specialLinkColor" value="#0000ff">
+        <button id="linkValider" class="btn-choice">Appliquer la modification</button>
+    </div>
+
+    <div class="color-choice">
+        <label>Couleur du texte :</label>
+        <input type="color" id="specialTextColor" value="#000000">
+        <button id="textValider" class="btn-choice">Appliquer la modification</button>
+    </div>
+
+    <div class="color-choice">
+        <label>Couleur du fond :</label>
+        <input type="color" id="specialBgColor" value="#ffffff">
+        <button id="couleurValider" class="btn-choice">Appliquer la modification</button>
+    </div>
+</div>
+
 
 <div class="actions">
     <button id="btnValider" class="btn">Appliquer le profil</button>
