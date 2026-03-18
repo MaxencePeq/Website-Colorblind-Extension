@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
         liens.forEach(function (lien){
 
             //dans le callback, je récupère la couleur
-            lien.style.color = message.color;
+            lien.style.setProperty('color', message.color, 'important');
         })
     }
 
@@ -19,8 +19,8 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
         elements.forEach(element => {
             // et j'exclus les liens pour ne pas écraser leur couleur
-            if (element.tagName !== 'A') {
-                element.style.color = message.color;
+            if ((element.tagName !== 'A') || element.tagName !== 'a') {
+                element.style.setProperty('color', message.color, 'important');
             }
         });
     }
@@ -38,7 +38,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
             // Si mon élément a un background différent de transparent, j'applique la couleur
             if(bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
-                element.style.backgroundColor = message.color;
+                element.style.setProperty('background-color', message.color, 'important');
             }
         });
     }
