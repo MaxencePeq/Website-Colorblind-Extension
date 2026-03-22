@@ -1,0 +1,135 @@
+body {
+    width: 320px;
+    padding: 20px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+h4 {
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+    color: #7f8c8d;
+}
+
+.options-container, .choice-container {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.radio-option:last-child {
+    border-bottom: none;
+}
+
+.radio-option input[type="radio"] {
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.radio-option label {
+    cursor: pointer;
+    flex: 1;
+}
+
+.label-title {
+    display: block;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.label-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: #95a5a6;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+#btnValider {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.color-choice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+
+.color-choice:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.color-choice label {
+    font-size: 0.85rem;
+    flex-grow: 1;
+}
+
+input[type="color"] {
+    border: none;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    margin-right: 8px;
+}
+
+.btn-choice {
+    background-color: #ecf0f1;
+    color: #333;
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-choice:hover {
+    background-color: #bdc3c7;
+}
