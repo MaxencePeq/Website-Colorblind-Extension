@@ -6,7 +6,7 @@
   "icons": {},
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "icons/favicon128.png"
+    "default_icon": "icons/favicon16.ico"
   },
   "background": {
     "service_worker": "background.js"
