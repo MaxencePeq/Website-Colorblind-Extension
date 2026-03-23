@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function envoyerMessage(data) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, data);
+        // Vérifier si on a bien un onglet valide avant d'envoyer
+        if (tabs && tabs.length > 0 && tabs[0].id) {
+            chrome.tabs.sendMessage(tabs[0].id, data, function(response) {
+                // J'ignore l'erreur si la page ne peut pas recevoir de message
+                if (chrome.runtime.lastError) {
+                    console.warn("Impossible d'envoyer le message à cet onglet (page protégée ou content script non chargé).");
+                }
+            });
+        }
     });
 }

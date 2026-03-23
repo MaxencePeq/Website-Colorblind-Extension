@@ -93,6 +93,7 @@ chrome.runtime.onMessage.addListener(function (message) {
 
     if (message.type === 'reset') {
         supprimerFiltre();
+        // location.reload();
     }
 
 });
