@@ -26,11 +26,14 @@ chrome.runtime.onMessage.addListener(function (message) {
 
         // On crée un SVG invisible avec le filtre dedans
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.id = 'daltonisme-svg-filter';
         svg.style = 'position:absolute; width:0; height:0; overflow:hidden;';
         svg.innerHTML = `
         <defs>
-        <!-- filter sert à -->
+        
+        <!-- feColorMatrix change les couleurs d'un élément en fonction d'une matrice de transformation
+         et MATRIX superpose 
+         voir doc : https://developer.mozilla.org/fr/docs/Web/SVG/Reference/Element/feColorMatrix -->
+         
             <filter id="daltonisme-filter">
                 <feColorMatrix type="matrix" values="${matrices[profil]}"/>
             </filter>
