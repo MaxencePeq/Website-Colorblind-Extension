@@ -1,32 +1,36 @@
-// matrices de correction
-const matrices = {
-    protanopie: `
+
+
+chrome.runtime.onMessage.addListener(function (message) {
+
+    function appliquerFiltre(profil) {
+        // matrices de correction
+        const matrices = {
+            protanopie: `
         0.567, 0.433, 0,     0, 0
         0.558, 0.442, 0,     0, 0
         0,     0.242, 0.758, 0, 0
         0,     0,     0,     1, 0
     `,
-    deuteranopie: `
+            deuteranopie: `
         0.625, 0.375, 0,   0, 0
         0.7,   0.3,   0,   0, 0
         0,     0.3,   0.7, 0, 0
         0,     0,     0,   1, 0
     `,
-    tritanopie: `
+            tritanopie: `
         0.95, 0.05,  0,     0, 0
         0,    0.433, 0.567, 0, 0
         0,    0.475, 0.525, 0, 0
         0,    0,     0,     1, 0
     `
-};
+        };
 
-chrome.runtime.onMessage.addListener(function (message) {
-
-    function appliquerFiltre(profil) {
+        supprimerFiltre();
 
         // On crée un SVG invisible avec le filtre dedans
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.style = 'position:absolute; width:0; height:0; overflow:hidden;';
+        svg.id = 'daltonisme-svg-filter';
         svg.innerHTML = `
         <defs>
         
@@ -79,4 +83,16 @@ chrome.runtime.onMessage.addListener(function (message) {
         });
         document.body.style.setProperty('background-color', message.color, 'important');
     }
+
+    // Supprime le filtre SVG et retire le style appliqué
+    function supprimerFiltre() {
+        const svg = document.getElementById('daltonisme-svg-filter');
+        if (svg) svg.remove();
+        document.documentElement.style.filter = '';
+    }
+
+    if (message.type === 'reset') {
+        supprimerFiltre();
+    }
+
 });
