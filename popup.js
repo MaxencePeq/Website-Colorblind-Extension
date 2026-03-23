@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const validation = document.querySelector('#btnValider');
     validation.addEventListener('click', function () {
 
-        const radioCoche = document.querySelector('input[name="daltonisme"]:checked');
-        envoyerMessage({ type: 'appliquerProfil', profil: radioCoche.value });
+        const profilCoche = document.querySelector('input[name="daltonisme"]:checked');
+        envoyerMessage({ type: 'appliquerProfil', profil: profilCoche.value });
     });
 
     /** --- Modifications manuelles des couleurs --- **/

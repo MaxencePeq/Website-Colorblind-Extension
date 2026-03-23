@@ -47,8 +47,10 @@ chrome.runtime.onMessage.addListener(function (message) {
     }
 
 
-
-
+    // Récupération du message et application du filtre.
+    if (message.type === 'appliquerProfil') {
+        appliquerFiltre(message.profil);
+    }
 
     /** Application des modifications personnalisées **/
     if (message.type === 'links') {
