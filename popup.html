@@ -10,7 +10,7 @@
 <h1 class="h6 text-danger">/!\ Certain site peuvent ne pas fonctionner avec l'extension /!\</h1>
 <p class="small text-secondary">Sélectionnez le profil adapté à votre vision :</p>
 
-<div class="list-group shadow-sm">
+<div class="list-group shadow-sm text-nowrap">
     <label class="list-group-item d-flex gap-3 align-items-center">
         <input class="form-check-input flex-shrink-0 m-0" type="radio" name="daltonisme" value="aucun">
         <span><strong>Aucune correction</strong><small class="d-block text-secondary">Couleurs d'origine</small></span>
@@ -28,6 +28,9 @@
         <span><strong>Tritanopie</strong><small class="d-block text-secondary">Difficulté avec le Bleu</small></span>
     </label>
 </div>
+
+<label for="intensite" class="form-label small mt-3 mb-1 text-nowrap">Intensité de la correction : <strong id="intensiteValeur">100 %</strong></label>
+<input type="range" class="form-range" id="intensite" min="0" max="100" step="5" value="100">
 
 <script src="popup.js"></script>
 </body>

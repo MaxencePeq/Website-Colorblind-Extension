@@ -1,17 +1,22 @@
 // appliquerFiltre et supprimerFiltre viennent de daltonisation.js (chargé avant via le manifest).
 
-function appliquerProfil(profil) {
+// intensite est stockée en pourcentage (0 à 100), 100 par défaut.
+function appliquerReglages({ profil, intensite = 100 }) {
   if (profil && profil !== "aucun") {
-    appliquerFiltre(profil);
+    appliquerFiltre(profil, intensite / 100);
   } else {
     supprimerFiltre();
   }
 }
 
-// Au chargement de la page : on applique le profil enregistré.
-chrome.storage.local.get("profil", (data) => appliquerProfil(data.profil));
+function lireReglages() {
+  chrome.storage.local.get(["profil", "intensite"], appliquerReglages);
+}
 
-// Quand le profil change depuis le popup : on met à jour la page (tous les onglets ouverts).
+// Au chargement de la page : on applique les réglages enregistrés.
+lireReglages();
+
+// Quand le profil ou l'intensité change depuis le popup : on met à jour la page (tous les onglets ouverts).
 chrome.storage.onChanged.addListener((changes) => {
-  if (changes.profil) appliquerProfil(changes.profil.newValue);
+  if (changes.profil || changes.intensite) lireReglages();
 });
