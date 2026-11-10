@@ -1,18 +1,17 @@
-chrome.runtime.onMessage.addListener(function (message) {
-  // Récupération du message et application du filtre.
-  if (message.type === "appliquerProfil") {
-    appliquerFiltre(message.profil);
-  }
+// appliquerFiltre et supprimerFiltre viennent de daltonisation.js (chargé avant via le manifest).
 
-  // Supprime le filtre SVG et retire le style appliqué
-  function supprimerFiltre() {
-    const svg = document.getElementById("daltonisme-svg-filter");
-    if (svg) svg.remove();
-    document.documentElement.style.filter = "";
-  }
-
-  if (message.type === "reset") {
+function appliquerProfil(profil) {
+  if (profil && profil !== "aucun") {
+    appliquerFiltre(profil);
+  } else {
     supprimerFiltre();
-    // location.reload();
   }
+}
+
+// Au chargement de la page : on applique le profil enregistré.
+chrome.storage.local.get("profil", (data) => appliquerProfil(data.profil));
+
+// Quand le profil change depuis le popup : on met à jour la page (tous les onglets ouverts).
+chrome.storage.onChanged.addListener((changes) => {
+  if (changes.profil) appliquerProfil(changes.profil.newValue);
 });

@@ -8,9 +8,11 @@
     "default_popup": "popup.html",
     "default_icon": "icons/favicon16.ico"
   },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["content.js"]
-  }],
-  "permissions": ["activeTab"]
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["daltonisation.js", "content.js"]
+    }
+  ],
+  "permissions": ["storage"]
 }

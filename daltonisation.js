@@ -1,4 +1,4 @@
-export function appliquerFiltre(profil) {
+function appliquerFiltre(profil) {
   // Matrices de correction (daltonisation), précalculées : C = I + E·(I − S)
   //  S = simulation de la dichromatie (Machado, Oliveira & Fernandes 2009, sévérité 1.0)
   //  E = redistribution de l'info perdue (Fidaner) : rouge/vert -> vert + bleu, bleu/jaune -> rouge + vert
