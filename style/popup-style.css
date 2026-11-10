@@ -19,7 +19,7 @@ h4 {
     color: #7f8c8d;
 }
 
-.options-container, .choice-container {
+.options-container {
     background: white;
     border-radius: 12px;
     padding: 15px;
@@ -27,8 +27,11 @@ h4 {
     margin-bottom: 20px;
 }
 
+/* radio à gauche, titre + description empilés à droite */
 .radio-option {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 15px;
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #eee;
@@ -40,15 +43,11 @@ h4 {
 }
 
 .radio-option input[type="radio"] {
-    margin-right: 15px;
+    grid-row: span 2;
+    margin: 0;
     width: 18px;
     height: 18px;
     cursor: pointer;
-}
-
-.radio-option label {
-    cursor: pointer;
-    flex: 1;
 }
 
 .label-title {
@@ -86,50 +85,4 @@ h4 {
 
 .btn:hover {
     opacity: 0.9;
-}
-
-.color-choice {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-
-.color-choice:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-.color-choice label {
-    font-size: 0.85rem;
-    flex-grow: 1;
-}
-
-input[type="color"] {
-    border: none;
-    width: 26px;
-    height: 26px;
-    padding: 0;
-    cursor: pointer;
-    background: none;
-    margin-right: 8px;
-}
-
-.btn-choice {
-    background-color: #ecf0f1;
-    color: #333;
-    padding: 6px 10px;
-    font-size: 0.7rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.btn-choice:hover {
-    background-color: #bdc3c7;
 }
