@@ -3,62 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Website for colorblind</title>
-    <link href="style/popup-style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
-<h1>/!\ Certain site peuvent ne pas fonctionner avec l'extension /!\</h1>
-<h4>Sélectionnez le profil adapté à votre vision :</h4>
+<body class="p-3 bg-light">
+<h1 class="h6 text-danger">/!\ Certain site peuvent ne pas fonctionner avec l'extension /!\</h1>
+<p class="small text-secondary">Sélectionnez le profil adapté à votre vision :</p>
 
-<div class="options-container">
-    <div class="radio-option">
-        <input type="radio" id="protanopie" name="daltonisme" value="protanopie">
-        <label for="protanopie">
-            <span class="label-title">Protanopie</span>
-            <span class="label-desc">Difficulté avec le Rouge</span>
-        </label>
-    </div>
-
-    <div class="radio-option">
-        <input type="radio" id="deuteranopie" name="daltonisme" value="deuteranopie">
-        <label for="deuteranopie">
-            <span class="label-title">Deutéranopie</span>
-            <span class="label-desc">Difficulté avec le Vert</span>
-        </label>
-    </div>
-
-    <div class="radio-option">
-        <input type="radio" id="tritanopie" name="daltonisme" value="tritanopie">
-        <label for="tritanopie">
-            <span class="label-title">Tritanopie</span>
-            <span class="label-desc">Difficulté avec le Bleu</span>
-        </label>
-    </div>
+<div class="list-group shadow-sm text-nowrap">
+    <label class="list-group-item d-flex gap-3 align-items-center">
+        <input class="form-check-input flex-shrink-0 m-0" type="radio" name="daltonisme" value="aucun">
+        <span><strong>Aucune correction</strong><small class="d-block text-secondary">Couleurs d'origine</small></span>
+    </label>
+    <label class="list-group-item d-flex gap-3 align-items-center">
+        <input class="form-check-input flex-shrink-0 m-0" type="radio" name="daltonisme" value="protanopie">
+        <span><strong>Protanopie</strong><small class="d-block text-secondary">Difficulté avec le Rouge</small></span>
+    </label>
+    <label class="list-group-item d-flex gap-3 align-items-center">
+        <input class="form-check-input flex-shrink-0 m-0" type="radio" name="daltonisme" value="deuteranopie">
+        <span><strong>Deutéranopie</strong><small class="d-block text-secondary">Difficulté avec le Vert</small></span>
+    </label>
+    <label class="list-group-item d-flex gap-3 align-items-center">
+        <input class="form-check-input flex-shrink-0 m-0" type="radio" name="daltonisme" value="tritanopie">
+        <span><strong>Tritanopie</strong><small class="d-block text-secondary">Difficulté avec le Bleu</small></span>
+    </label>
 </div>
 
-<div class="choice-container">
-    <div class="color-choice">
-        <label>Couleur des liens :</label>
-        <input type="color" id="specialLinkColor" value="#0000ff">
-        <button id="linkValider" class="btn-choice">Appliquer la modification</button>
-    </div>
-
-    <div class="color-choice">
-        <label>Couleur du texte :</label>
-        <input type="color" id="specialTextColor" value="#000000">
-        <button id="textValider" class="btn-choice">Appliquer la modification</button>
-    </div>
-
-    <div class="color-choice">
-        <label>Couleur du fond :</label>
-        <input type="color" id="specialBgColor" value="#ffffff">
-        <button id="bgValider" class="btn-choice">Appliquer la modification</button>
-    </div>
-</div>
-
-<div class="actions">
-    <button id="btnValider" class="btn">Appliquer le profil</button>
-    <button id="backToBaseColor" class="btn">Réinitialiser les couleurs</button>
-</div>
+<label for="intensite" class="form-label small mt-3 mb-1 text-nowrap">Intensité de la correction : <strong id="intensiteValeur">100 %</strong></label>
+<input type="range" class="form-range" id="intensite" min="0" max="100" step="5" value="100">
 
 <script src="popup.js"></script>
 </body>
